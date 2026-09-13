@@ -86,7 +86,44 @@ section{
         rgba(16,11,51,0) 100%
     );
 }
+.marquee{
+    width: 100dvw;
+    overflow: hidden;
+    position: relative;
+}
 
+.marquee-box{
+    display: flex;
+    align-items: center;
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    animation: marquee 60s linear infinite;
+}
+
+.marquee-item{
+    float: left;
+   
+}
+
+.marquee-item:after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(229, 172, 142, 0),
+        rgba(255, 255, 255, 0.5)50%,
+        rgba(229,172, 142, 0)
+    );
+}
+.marquee-item:hover::after,button:focus::after{
+    animation: shine 2s forwards;
+}
 .gradient-sphere{
     position: absolute;
     width: 500px;
@@ -154,5 +191,19 @@ section{
     }
     to{
         transform: rotate(360deg);
+    }
+}
+
+@keyframes marquee {
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-50%);
+    }
+}
+@keyframes shine {
+    100%{
+       transform: rotateZ(60deg)translate(1em, -15em);
     }
 }
